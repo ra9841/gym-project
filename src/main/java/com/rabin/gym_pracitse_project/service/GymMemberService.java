@@ -8,4 +8,13 @@ public interface GymMemberService {
     GymMemberDto savingMemberDetails(GymMemberDto gymMemberDto);
 
     List<GymMemberDto> allListOfGymMember();
+
+
+    String deleteTheRecordById(Long id);
+
+    GymMemberDto getParticularRecordByEmail(String email);
+
+    GymMemberDto updatingRecordByEmail(GymMemberDto gymMemberDto, String email);
+
+
 }
