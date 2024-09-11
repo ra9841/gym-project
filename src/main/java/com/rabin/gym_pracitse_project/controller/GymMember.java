@@ -17,12 +17,29 @@ public class GymMember {
 
     @PostMapping
     public ResponseEntity<GymMemberDto> registeringGymMember(@RequestBody GymMemberDto gymMemberDto) {
-      return  ResponseEntity.ok(gymMemberService.savingMemberDetails(gymMemberDto));
+        return ResponseEntity.ok(gymMemberService.savingMemberDetails(gymMemberDto));
     }
 
     @GetMapping
-    public ResponseEntity<List<GymMemberDto>> listOfGymMember(){
+    public ResponseEntity<List<GymMemberDto>> listOfGymMember() {
         return ResponseEntity.ok(gymMemberService.allListOfGymMember());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletingTheRecord(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(gymMemberService.deleteTheRecordById(id));
+
+    }
+
+    @GetMapping("/shows/{email}")
+    public ResponseEntity<GymMemberDto> getRecordOnTheBasisOfEmail(@PathVariable String email) {
+        return ResponseEntity.ok(gymMemberService.getParticularRecordByEmail(email));
+    }
+
+    @PutMapping("/{email}")
+    public ResponseEntity<GymMemberDto> updateRecordOnTheBasisOfEmail(@RequestBody GymMemberDto gymMemberDto, @PathVariable String email) {
+        return ResponseEntity.ok(gymMemberService.updatingRecordByEmail(gymMemberDto, email));
+    }
+
 
 }
